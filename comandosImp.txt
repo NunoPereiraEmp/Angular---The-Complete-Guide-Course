@@ -1,0 +1,39 @@
+--cria novo component chamado login, o npm run ng , corre comandos ng
+ npm run ng generate component login
+
+--cria um novo projeto
+npm init @angular myApp
+npm init @angular myApp --no-strict is a flag that can be used when running the TypeScript compiler (tsc) or when using the Angular CLI to generate a new project or component.
+
+--inicia o frontend
+
+npm start
+
+----
+no ficheiro angular.json, podemos adicionar outro estilo, em "styles", como  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.youtube.com/watch?v=Y17CTs09ZUQ&ab_channel=CodeWithBijay
+
+
+https://www.udemy.com/home/my-courses/learning/
+
+tiago.costa@nu-in.com
+H7YN3a,vKe-sghB
+
+Diogo passos
+diogo.passos@valeriushub.com
+
+968166010
