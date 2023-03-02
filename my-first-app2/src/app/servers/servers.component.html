@@ -1,2 +1,22 @@
+<!--property Binding [disabled]="!allowNewServer"
+$event é uma variavel de reserva que podemos usar 
+no template quando usamos o event binding
+portanto $event é o dado que vem de um evento neste caso o (input)
+-->
+
+<label>Server Name</label>
+<input 
+type="text"
+class="form-control"
+(input)="onUpdateServerName($event)"
+>
+<p>{{serverName}}</p>
+<button class="btn btn-primary"
+[disabled]="!allowNewServer"
+(click)="onCreateServer()"
+>Add Server</button>
+<p>{{allowNewServer}}</p>
+<p [innerText]= "allowNewServer"></p>
+<p>{{serverCreationStatus}}</p>
 <app-server></app-server>
 <app-server></app-server>

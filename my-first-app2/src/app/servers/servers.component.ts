@@ -17,11 +17,29 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
+  allowNewServer:boolean = false;
+  serverCreationStatus:string='No server was created!';
+  serverName="";
 
-
+  constructor(){
+    setTimeout(()=>{
+      this.allowNewServer=true;
+    },2000)
+  }
 
   ngOnInit() {
-    throw new Error('Method not implemented.');
+    
+  }
+
+  onCreateServer(){
+    this.serverCreationStatus= "Server was created";
+  }
+
+  //quero receber aqui coisas por parametro, para isso no
+  //html como $event na função chamada mo html
+  onUpdateServerName( event:Event){
+    this.serverName=(<HTMLInputElement>event.target).value;
+
   }
 
 }
