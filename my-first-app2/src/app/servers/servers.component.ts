@@ -19,11 +19,11 @@ import { Component, OnInit} from '@angular/core';
 export class ServersComponent implements OnInit {
   allowNewServer:boolean = false;
   serverCreationStatus:string='No server was created!';
-  serverName="";
+  serverName="test server";
 
   constructor(){
     setTimeout(()=>{
-      this.allowNewServer=true;
+      this.allowNewServer=true; 
     },2000)
   }
 
@@ -32,7 +32,8 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer(){
-    this.serverCreationStatus= "Server was created";
+    this.serverCreationStatus= "Server was created! Name is "+ this.serverName;
+    console.log(this.serverName);
   }
 
   //quero receber aqui coisas por parametro, para isso no
