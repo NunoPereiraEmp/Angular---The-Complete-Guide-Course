@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Recipe Book</a>
+        </div>
+            <!--Em HTML, o elemento <div> é um bloco de construção usado para agrupar elementos 
+                relacionados. A classe "collapse" é uma classe do Bootstrap que pode ser usada para 
+                controlar a visibilidade de um elemento. A classe "navbar-collapse" é usada em 
+                conjunto com a barra de navegação do Bootstrap e especifica o conteúdo que é 
+                colapsado quando a barra de navegação é expandida ou encolhida.-->
+            <div class="collapse navbar-collapse">
+                <!--Esta é uma tag HTML para criar uma lista não ordenada que será 
+                    estilizada como um menu de navegação. A classe "nav" indica que é uma lista 
+                    de navegação e a classe "navbar-nav" indica que é uma lista dentro de uma barra 
+                    de navegação (navbar). Normalmente, dentro da tag <ul class="nav navbar-nav"> seriam adicionados elementos 
+                    <li> que representariam cada item de navegação do menu.-->
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">Shopping List</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret "></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Save data</a></li>
+                            <li><a href="#">Fetch data</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</nav>

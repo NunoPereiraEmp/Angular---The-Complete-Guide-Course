@@ -1,5 +1,10 @@
 --cria novo component chamado login, o npm run ng , corre comandos ng
  npm run ng generate component login
+podemos adicionar --skip-tests para não criar ficheiros de teste
+
+criar dentro da pasta recipes
+ npm run ng generate component recipes/recipe-list --skip-tests
+
 
 --cria um novo projeto
 npm init @angular myApp
@@ -28,6 +33,13 @@ Attribute Directives - are directives that modify the behavior or appearance of 
 Directives can be used in Angular templates by adding them to the element as an attribute or as a structural directive. When a directive is added to an element, it can modify the element's behavior, appearance, or structure.
 
 
+para substituir em angular.json
+ "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+e instalar npm install bootstrap@3
+install --save bootstrap@3
 
 
 
