@@ -13,6 +13,20 @@ npm start
 no ficheiro angular.json, podemos adicionar outro estilo, em "styles", como  "node_modules/bootstrap/dist/css/bootstrap.min.css",
 
 
+directives
+-são instruções do no DOM, 
+In Angular, directives are special instructions that can be applied to elements in the DOM (Document Object Model) to add additional behaviors or functionality. Directives allow developers to create reusable components that can modify the behavior, appearance or structure of the DOM elements.
+
+Angular provides three types of directives:
+
+Component Directives - are directives that represent a component in Angular. They have a template and can contain logic.
+
+Structural Directives - are directives that alter the structure of the DOM. Examples of structural directives are *ngIf, *ngFor, and *ngSwitch.
+
+Attribute Directives - are directives that modify the behavior or appearance of an element. Examples of attribute directives are ngModel, ngClass, ngStyle, and so on.
+
+Directives can be used in Angular templates by adding them to the element as an attribute or as a structural directive. When a directive is added to an element, it can modify the element's behavior, appearance, or structure.
+
 
 
 
