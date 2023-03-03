@@ -1,0 +1,35 @@
+<!--property Binding [disabled]="!allowNewServer"
+$event é uma variavel de reserva que podemos usar 
+no template quando usamos o event binding
+portanto $event é o dado que vem de um evento neste caso o (input)
+-->
+
+<label>Server Name</label>
+<!--<input 
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)"
+>-->
+<!-- [(ngModel)]="serverName" -> two way binding-->
+<input  type="text"
+    class="form-control"
+    [(ngModel)]="serverName"
+    >
+<p>{{serverName}}</p>
+<button class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()">Add Server</button>
+<p>{{allowNewServer}}</p>
+<!--<p [innerText]= "allowNewServer"></p>
+<p>{{serverCreationStatus}}</p>-->
+<!--* significa que vai mudar a estrutura do html, a structural directive, neste caso o *ngIf quando fica a true cria o p, adiciona ou remove elementos -->
+<!--basicamente o # é um marcador que damos por exemplo uma espécie de id como #noServer e 
+que pode ser chamado mediante uma condição  *ngIf="serverCreated"; else noServer-->
+<!--No Angular, os templates e os componentes podem ter variáveis de referência, que são definidas com o prefixo "#" (hash). Essas variáveis podem ser usadas para se referir ao elemento em outro lugar do template ou componente. -->
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName}}</p>
+<ng-template #noServer>
+    <p>No server was created</p>
+</ng-template>
+<!--percorre a lista servers e cria um novo app-server, por cada elemento-->
+<app-server *ngFor="let server of servers"></app-server>
+

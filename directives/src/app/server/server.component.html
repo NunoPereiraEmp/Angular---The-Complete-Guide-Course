@@ -1,0 +1,11 @@
+<!--string inetrpolation syntax {{}} to send data to html from ts-->
+<!-- modificar a cor do componente do servidor dependendo do server status com o binding do ngStyle, o binding ou precisa de [], 
+portanto este ngStyle permite dinamicamente modificar estilos
+ngClass permite modificar dinamicamente css classes -->
+<!--<h4>{{'Server'}} with ID {{serverId}} is {{getServerStatus()}}</h4> 
+[ngClass]="{online: serverStatus==='online'}"-> basicamente chama o estilo online do server.component.ts
+-->
+
+<p [ngStyle]="{backgroundColor: getColor()}"
+[ngClass]="{online: serverStatus==='online'}"
+>{{'Server'}} with ID {{serverId}} is {{getServerStatus()}}</p>
