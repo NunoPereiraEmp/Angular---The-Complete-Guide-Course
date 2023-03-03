@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <li>Add button says dysplay details</li>
+        <li>Add a paragraph with any content of your choice </li>
+        <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+        <li>Log all button clicks in a array and the output of the array below the secret paragraph </li>
+        <li>Starting at the 5th log item, give all future log itens a blue background (via nstyle ) and white color (ngClass)</li>
+      </ol>
+      <hr>
+      <!--<button class="btn btn-primary" (click)="showSecret =!showSecret">Display details</button>-->
+      <!--<button class="btn btn-primary" (click)="showSecret =!showSecret">Display details</button>-->
+      <button class="btn btn-primary" (click)="onToggleDetails()">Display details</button>
+      <br> <br>
+      <button class="btn btn-primary" (click)="onToggleDetailsTime()">Display details Time</button>
+      <p *ngIf="showSecret">Secret password = tuna</p>
+      <div *ngFor="let logItem of log"
+      [ngStyle]="{backgroundColor: logItem>=5 ? 'blue' :  'transparent'}"
+      [ngClass]="{'white-text': logItem>=5}"
+      >{{logItem}}</div>
+      <!--for string, o index é uma expressão propria deles para dar o index -->
+      <div *ngFor="let logItem of logString; let i= index"
+      [ngStyle]="{backgroundColor: i>=5 ? 'blue' :  'transparent'}"
+      [ngClass]="{'white-text': i>=5}"
+      >{{logItem}}</div>
+    </div>
+  </div>
+</div>
