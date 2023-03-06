@@ -39,7 +39,7 @@ para substituir em angular.json
               "src/styles.css"
             ],
 e instalar npm install bootstrap@3
-install --save bootstrap@3
+npm install --save bootstrap@3
 
 
 
