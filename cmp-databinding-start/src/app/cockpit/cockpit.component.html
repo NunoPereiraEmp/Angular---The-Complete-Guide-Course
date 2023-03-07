@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-12">
+        <p>Add new Servers or blueprints!</p>
+        <label>Server Name</label>
+        <input type="text" class="form-control" #serverNameInput>
+        <!--<input type="text" class="form-control" [(ngModel)]="newServerName">
+        o #serverNameInput é uma referncia local do input html todo, serve para ir buscar os dados do html, para aceder no ts temos que por .value exemplo server.value
+        -->
+        <label>Server Content</label>
+        <input type="text" class="form-control" [(ngModel)]="newServerContent">
+        <br>
+        <button class="btn btn-primary" (click)="onAddServer(serverNameInput)">Add Server</button>
+        <button class="btn btn-primary" (click)="onAddBlueprint()">Add Server Blueprint</button>
+    </div>
+</div>

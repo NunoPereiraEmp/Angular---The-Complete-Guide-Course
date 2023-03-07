@@ -18,8 +18,7 @@ npm start
 --
 adicionar ao debug para ver vars do ng "ctx.$implicit"
 
-----
-no ficheiro angular.json, podemos adicionar outro estilo, em "styles", como  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
 
 
 directives
@@ -45,7 +44,9 @@ para substituir em angular.json
 e instalar npm install bootstrap@3
 npm install --save bootstrap@3
 
-
+----
+no ficheiro angular.json, podemos adicionar outro estilo, em "styles", como  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+depois tenho que fazer reload ao programa
 
 
 
@@ -67,3 +68,32 @@ Diogo passos
 diogo.passos@valeriushub.com
 
 968166010
+
+
+para abrir o front end  
+dpassos
+ZDlsW
+
+peguntas--
+
+
+
+em environment.ts o que é  production: false, e este url: 'https://bko-hub.azurewebsites.net/api/' esta api é
+para o quê?
+export const environment = {
+    production: false,
+    url: 'https://bko-hub.azurewebsites.net/api/'
+};
+
+
+para que é que serve a class AuthInterceptor
+
+
+também um pouco perdido para que é que serve na class TokenStorageService , depois do generate
+para que é que precisamos de removeItem  e depois do setItem
+
+o gettoken só recebe uma string
+
+
+
+ver  this.subscription = this.configService

@@ -1,0 +1,20 @@
+<div class="container">
+  <app-cockpit 
+  (serverCreated)="onServerAdded($event)" 
+  (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <!--passar dados do componente pai para o componente filho, que pode usar esses dados para renderizar o conteúdo de maneira dinâmica.-->
+      <app-server-element *ngFor="let serverElement of serverElements" [element]="serverElement">
+        <!--como estamos receber valor por um ng, dentro do meu póprio component, app-server-element os valores desse for perdem-se
+        então precisamos de adicionar uma directive no  app-server-element, a ng-content
+        -->
+        <p>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+      </app-server-element>
+    </div>
+  </div>
+</div>
