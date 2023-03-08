@@ -1,0 +1,21 @@
+<div class="container">
+  <app-cockpit 
+  (serverCreated)="onServerAdded($event)" 
+  (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">Change firts element</button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first component</button>
+      <!--passar dados do componente pai para o componente filho, que pode usar esses dados para renderizar o conteúdo de maneira dinâmica.-->
+      <app-server-element 
+      *ngFor="let serverElement of serverElements" 
+      [element]="serverElement"
+      [name]="serverElement.name"
+      >
+        <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+      </app-server-element>
+    </div>
+  </div>
+</div>
