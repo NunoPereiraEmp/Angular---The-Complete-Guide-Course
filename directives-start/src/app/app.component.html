@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <!--o primeiro odd é a classe do css o segundo é do for para ver se é veradade se usamos o css odd-->
+          <li class="list-group-item"
+          [ngClass]="{odd: odd%2!=0}"
+          [ngStyle]="{backgroundColor: odd%2!=0 ? 'yellow' : 'transparent'}"
+          *ngFor="let odd of oddNumbers">
+            {{odd}}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+          <li class="list-group-item"
+          [ngClass]="{even: even%2!=0}"
+          [ngStyle]="{backgroundColor: even%2!=0 ? 'yellow' : 'transparent'}"
+          *ngFor="let even of evenNumbers">
+            {{even}}
+          </li>
+        </div>
+      </ul>
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
