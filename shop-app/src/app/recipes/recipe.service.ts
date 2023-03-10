@@ -14,7 +14,8 @@ export class RecipeService {
 
 
     getRecipes(){
-        return this.recipes;
+        //com o slice recebemos mesmo uma copia.
+        return this.recipes.slice();
     }
 
 }
