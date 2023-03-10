@@ -9,7 +9,7 @@ export class AppComponent {
   numbers = [1, 2, 3, 4, 5];
   oddNumbers=[];
   evenNumbers=[];
-
+  value:number=10;
   onlyOdd = false;
 
   constructor(){

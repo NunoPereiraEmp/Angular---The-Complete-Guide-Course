@@ -21,10 +21,53 @@
             {{even}}
           </li>
         </div>
+        <!-- <ng-template> não é renderizado mas permite definir um template para o angular usar quando 
+          for assim determinado, dependendo de uma condição
+        No exemplo que você forneceu, a diretiva estrutural *ngIf não é usada diretamente em um 
+        elemento HTML, mas sim em um elemento <ng-template>. Quando uma diretiva estrutural é usada 
+          em um <ng-template>, a sintaxe com asterisco (*ngIf) não é necessária.
+            "[ngIf]" para passar a condição que controla se o <ng-template> é renderizado ou não.
+        -->
+        <ng-template [ngIf]="!onlyOdd">
+          <div>
+            <li class="list-group-item"
+          [ngClass]="{even: even%2!=0}"
+          [ngStyle]="{backgroundColor: even%2!=0 ? 'yellow' : 'transparent'}"
+          *ngFor="let even of evenNumbers">
+            {{even}}
+          </li>
+          </div>
+        </ng-template>
       </ul>
+      <!--neste caso o appBasicHighlight é um atribute selector, já que muda a cor do background do p-->
+      <p appBasicHighlight>Style with basic directive!</p>
+      <p appBetterHighlight >Style with better directive!</p>
+      <p appBetterHighlightInput [defaultColor]="'yellow'" [highlightColor]="'red'" >Style with better directive with Input!</p>
       <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template>
+      <hr>
+      <p>Agora renderizar com template e ViewContainerRef</p>
+      
+      <ul class="list-group">
+        <!--a * é porque é uma structural directive-->
+        <div *appUnless="onlyOdd">
+          <li class="list-group-item"
+          [ngClass]="{even: even%2!=0}"
+          [ngStyle]="{backgroundColor: even%2!=0 ? 'yellow' : 'transparent'}"
+          *ngFor="let even of evenNumbers">
+            {{even}}
+          </li>
+        </div>
+      </ul>
+      <hr>
+      <p>Agora vou usar ngSwitch</p>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is Default</p>
+      </div>
     </div>
   </div>
 </div>
