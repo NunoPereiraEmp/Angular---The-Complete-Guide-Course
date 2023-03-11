@@ -10,19 +10,14 @@ import { RecipeService } from '../recipe.service';
 //Recipe[] significa que é um objeto
 export class RecipeListComponent implements OnInit {
   recipes!: Recipe[];
-  @Output()
-  recipeWasSelected = new EventEmitter<Recipe>();
 
   //para injetar o codigo,  tem de ser de um componente pai
   constructor(private recipeService: RecipeService){
-    
+
   }
   ngOnInit(): void {
     this.recipes= this.recipeService.getRecipes();
   }
 
-  onRecipeSelected(recipe:Recipe){
-    this.recipeWasSelected.emit(recipe);
-  }
 
 }
