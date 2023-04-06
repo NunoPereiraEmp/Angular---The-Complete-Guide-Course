@@ -17,7 +17,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy{
     this.igChangeSub.unsubscribe();
   }
   ngOnInit(): void {
-    this.ingredients= this.slSerice.getIngredient();
+    this.ingredients= this.slSerice.getIngredients();
     //basicamente como é um evento vai logo para aaqui a baixo  nem passa pela linha a cima, quando o evento é chamado e atualiza a copia
     //ingredients
     this.igChangeSub= this.slSerice.ingredientsChanged.subscribe(
