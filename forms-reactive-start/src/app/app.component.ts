@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{FormControl, FormGroup} from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +8,72 @@ import{FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   ngOnInit(): void {
-    this.signupForm=  new FormGroup({
-      'username': new FormControl(null),
-      'email': new FormControl(null),
+    this.signupForm = new FormGroup({
+      'userData': new FormGroup({
+        'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
+        'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
+      }),
+
       'gender': new FormControl('male'),
+      'hobbies': new FormArray([])
     });
+    //this.signupForm.valueChanges.subscribe((value)=> console.log(value));
+    //this.signupForm.statusChanges.subscribe((value)=> console.log(value));
+
+   /* this.signupForm.setValue({
+      'userData': {
+        'username' : 'Max',
+        'email': 'max@test.com'
+      },
+      'gender' : 'male',
+      'hobbies' : []
+    });
+    this.signupForm.patchValue({
+      'userData': {
+        'username' : 'Anna',
+      },
+    });*/
+
   }
   genders = ['male', 'female'];
   signupForm: FormGroup;
+  forbiddenUsernames= ['Chris', 'Anna'];
 
-  onSubmit(){
-    console.log(this.signupForm);1
+  onSubmit() {
+    console.log(this.signupForm); 1
+    //this.signupForm.reset();
   }
+
+  onAddHobby(){
+    const control= new FormControl(null, Validators.required);
+    (<FormArray>this.signupForm.get('hobbies')).push(control);
+  }
+
+  //queremos ter uma key value par , onde a key é interpretada por uma string -> [s:string] : boolean ,
+  // isto retorna uma key name,  objeto onde é intepertrado como uma string-> {nameIsForbidden:true}
+  //!==-1 porque se não tiver passa -1 no if e isso é interpretado como verdadeiro
+  
+  forbiddenNames(control: FormControl):{[s:string] : boolean}{
+    if(this.forbiddenUsernames.indexOf(control.value)!==-1){
+      return{'nameIsForbidden':true};  
+    }
+    return null;
+  }
+
+  forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject)=>{
+      setTimeout(()=>{
+        if(control.value==='teste@teste.com'){
+          resolve({'emailIsForbidden':true});
+        }
+        else{
+          resolve(null);
+        }
+      },1500);
+    });
+    return promise;
+  }
+
 }
