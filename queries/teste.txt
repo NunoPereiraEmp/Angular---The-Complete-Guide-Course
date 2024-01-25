@@ -1,0 +1,251 @@
+id_return_old, order_id_old, order_name_old, id_brand_old, started_at_old, IDStatus_old, id_costumer_old, first_name_old, last_name_old, email_old , address1_old, address2_old, phone_old, zipcode_old, province_old, country_old, city_old, order_created_at_old, shipping_cost_old, tracking_id_old, currency_old, id_return_payment_old, mb_return_payment_old, return_fee_id_old, label_old, order_id_exc_old, order_name_exc_old, id_brands_warehouses_old, refund_total_old, pre_return_old, id_carrier_old,
+
+
+
+id_return_new, order_id_new, order_name_new, id_brand_new, started_at_new, IDStatus_new, id_costumer_new, first_name_new, last_name_new, email_new , address1_new, address2_new, phone_new, zipcode_new, province_new, country_new, city_new, order_created_at_new, shipping_cost_new, tracking_id_new, currency_new, id_return_payment_new, mb_return_payment_new, return_fee_id_new, label_new, order_id_exc_new, order_name_exc_new, id_brands_warehouses_new, refund_total_new, pre_return_new, id_carrier_new
+
+
+
+OLD.id_brand, OLD.started_at, OLD.IDStatus, OLD.id_costumer, OLD.first_name, OLD.last_name, OLD.email , OLD.address1, OLD.address2, OLD.phone, OLD.zipcode, OLD.province, OLD.country, OLD.city, OLD.order_created_at, OLD.shipping_cost, OLD.tracking_id, OLD.currency, OLD.id_return_payment, OLD.mb_return_payment, OLD.return_fee_id, OLD.label, OLD.order_id_exc, OLD.order_name_exc, OLD.id_brands_warehouses, OLD.refund_total, OLD.pre_return, OLD.id_carrier,
+
+
+
+
+como obter dados desta tabela  CREATE TABLE returns_journal (
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    change_type VARCHAR(10), 
+    change_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_return_old INT,
+    order_id_old BIGINT,
+    order_name_old VARCHAR(45),
+    id_brand_old INT,
+    started_at_old TIMESTAMP,
+    IDStatus_old INT,
+    id_customer_old BIGINT,
+    first_name_old VARCHAR(255),
+    last_name_old VARCHAR(255),
+    email_old  VARCHAR(255),
+    address1_old VARCHAR(1000),
+    address2_old VARCHAR(1000),
+    phone_old VARCHAR(45),
+    zipcode_old VARCHAR(45),
+    province_old VARCHAR(255),
+    country_old VARCHAR(45),
+    city_old VARCHAR(45),
+    order_created_at_old TIMESTAMP,
+    shipping_cost_old DECIMAL(16,2),
+    tracking_id_old VARCHAR(45),
+    currency_old VARCHAR(3),
+    id_return_payment_old INT,
+    mb_return_payment_old VARCHAR(255),
+    return_fee_id_old INT,
+    label_old LONGBLOB,
+    order_id_exc_old BIGINT,
+    order_name_exc_old VARCHAR(255),
+    id_brands_warehouses_old INT,
+    refund_total_old DECIMAL(10,2),
+    pre_return_old TINYINT,
+    id_carrier_old INT,
+    id_return_new INT,
+    order_id_new BIGINT,
+    order_name_new VARCHAR(45),
+    id_brand_new INT,
+    started_at_new TIMESTAMP,
+    IDStatus_new INT,
+    id_customer_new BIGINT,
+    first_name_new VARCHAR(255),
+    last_name_new VARCHAR(255),
+    email_new  VARCHAR(255),
+    address1_new VARCHAR(1000),
+    address2_new VARCHAR(1000),
+    phone_new VARCHAR(45),
+    zipcode_new VARCHAR(45),
+    province_new VARCHAR(255),
+    country_new VARCHAR(45),
+    city_new VARCHAR(45),
+    order_created_at_new TIMESTAMP,
+    shipping_cost_new DECIMAL(16,2),
+    tracking_id_new VARCHAR(45),
+    currency_new VARCHAR(3),
+    id_return_payment_new INT,
+    mb_return_payment_new VARCHAR(255),
+    return_fee_id_new INT,
+    label_new LONGBLOB,
+    order_id_exc_new BIGINT,
+    order_name_exc_new VARCHAR(255),
+    id_brands_warehouses_new INT,
+    refund_total_new DECIMAL(10,2),
+    pre_return_new TINYINT,
+    id_carrier_new INT
+    );
+    pelo id_return_new se não for null se for null recebo pelo id_return_old em sql
+
+
+
+    é possivel se o change_type for igual a INSERT eu não receber as variaveis que tem no final _old e se for DELETE não receber as variaveis que no nome tem no final _new, se for UPDATE recebebo uma linha normal , o meu codigo sql está assim SELECT *
+    FROM returns_journal
+    WHERE id_return_new = 439;
+    
+    -- Se o id_return_new for nulo, busca pelo id_return_old
+    SELECT *
+    FROM returns_journal
+    WHERE id_return_old = 439;
+
+    como juntar esta query só numa 
+    SELECT *
+    FROM returns_journal
+    WHERE id_return_new = 439
+      AND id_return_new IS NOT NULL;
+    
+    SELECT *
+    FROM returns_journal
+    WHERE id_return_old = 439
+      AND id_return_old IS NOT NULL;
+    
+
+
+tenho o getorderdetails e quero o que está em getReturnLines e recebo em  returnline.data.lines[0.image_url
+o getReturnLines recebe o id_return
+
+tenho que modificar o getOrderDetails
+
+
+
+returnlines
+
+Returns
+    - returns
+    - returns_lines
+
+ 
+
+Sell
+    - 2hand_products_child
+
+ 
+
+Repair
+    - repair_header
+    - repair_line
+
+
+810
+
+export async function getOrderDetail(
+
+
+
+
+    export async function removeCountriesReturnExchange(
+        id_brand: any,
+        countries: any
+      ) {
+        const queryStringDelete = `DELETE FROM exchange_countries WHERE id_country NOT IN (?) AND id_brand=?`;
+        await new Promise((resolve, reject) => {
+          db.query(queryStringDelete, [countries, id_brand], (err, result) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(result);
+          });
+        });
+      }
+
+
+no returnId
+
+
+return_id: return_reason.option ? return_reason.option.option_id : JSON.parse(localStorage.getItem('exchangeOption')!),
+
+this.exchangeOption = return_option.option_id
+
+for (var return_option of this.returnDetails.return_options) {
+
+
+    return_id: return_reason.option ? return_reason.option.option_id : JSON.parse(localStorage.getItem('exchangeOption')!),
+
+    localStorage.setItem('exchangeOption',
+
+
+
+    na tabela returns preciso de todos os id_return com o order_name que eu vou enviar, quero a variavel currency e a variavel order_created_at as date, em cada id_return vou há tabela returns_lines que tem que ter o mesmo id_return que a tabela return e quero as linhas sku, total as price,  e IDStatus  com esse id_return, quero também  ir há tabela returnStatus pelo IDStatus e receber o description correspondente pelo nome de statusDescription
+
+
+na tabela 2hand_products_child quero todos os product_child_id as idSubmission, created_at as date, price, product_child_id_status as IDStatus   com o order_name que eu vou enviar. Com o product_child_id_status vou há tabela 2hand_products_child_status e comparo p valor do product_child_id_status com o valor da coluna product_status_id e recebo o valor da description as statusDescription. 
+
+
+SELECT
+      2hand_products_child.*, 
+      2hand_customers.FirstName, 
+      2hand_customers.LastName, 
+      2hand_products_child_status.description AS status_description,
+      currencies.code_currency
+    FROM
+      2hand_products_child
+      INNER JOIN
+      2hand_products_child_status
+      ON 
+        2hand_products_child.product_child_id_status = 2hand_products_child_status.product_status_id
+      INNER JOIN
+      2hand_customers
+      ON 
+        2hand_products_child.customer_id = 2hand_customers.CustomerID
+        INNER JOIN currencies ON 2hand_customers.CurrencyID = currencies.id_currency
+        WHERE id_brand=?`;
+
+
+
+
+
+
+
+
+
+        
+exports.updateRefundTotal = async function (
+    id_brand: any,
+    id_return: any,
+    refund_total: any
+  ) {
+    let queryString =
+      "UPDATE returns SET refund_total = ? WHERE id_return = ? AND id_brand = ?;";
+    let params = [refund_total, id_return, id_brand];
+    return await new Promise((resolve, reject) => {
+      db.query(queryString, params, (err, result: any) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(result[0]);
+      });
+    });
+  };
+
+
+
+
+  
+id_return: 440
+
+
+refund_total: '0.00'
+
+"UPDATE returns SET refund_total = ? WHERE id_return = ? AND id_brand = ?;";
+
+
+
+START TRANSACTION;
+
+UPDATE returns SET IDStatus = ? WHERE id_return = ?;
+
+UPDATE returns SET refund_total = 0.00 WHERE id_return = 440 AND id_brand = 1;
+
+COMMIT;
+
+
+UPDATE returns
+SET refund_total = ?,
+    IDStatus = ?
+WHERE id_return = ? AND id_brand = ?;
+
+IsHistoryTrue()
+this.dataHistory = await this.returnService.getHistoryJournalReturns(id_return);
